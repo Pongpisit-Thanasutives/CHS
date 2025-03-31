@@ -1,6 +1,6 @@
 from sklearn.linear_model import LinearRegression as LinearRegression
-from mlxtend.feature_selection import ExhaustiveFeatureSelector as EFS
 from sklearn.model_selection import LeaveOneOut
+from mlxtend.feature_selection import ExhaustiveFeatureSelector as EFS
 
 def best_subset(X, y, support_size=1, scoring='r2', cv=5, leave_one_out=False):
     if leave_one_out:
