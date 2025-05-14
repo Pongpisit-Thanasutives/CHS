@@ -1,13 +1,15 @@
 import numpy as np
 from scipy.special import loggamma
 
-def log_evidence(X_full, y, effective_indices, v=1, standardize=False):
-    k = 1 + 1/v
+def log_evidence(X_full, y, effective_indices, v=1, k=3, standardize=False):
     N = len(y)
     p = len(effective_indices)
 
     if standardize:
-        y = (y - y.mean())/y.std()
+        k = 1 + 1/v
+        X_full = (X_full-X_full.mean(axis=0))/X_full.std(axis=0)
+        y = (y-y.mean())/y.std()
+
     K = X_full[:, effective_indices]
 
     KT = K.T # intermediate var
